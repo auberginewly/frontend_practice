@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浮动</title>
+    <style>
+        .father {
+            background-color: aqua;
+            /* height: 150px; */
+            border: 5px solid red;
+            /* overflow: hidden; */
+        }
+        .father::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .left-son {
+            float: left;
+            background-color: purple;
+            width: 100px;
+            height: 100px;
+        }
+        .right-son {
+            float: right;
+            background-color: yellow;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="left-son">左浮动</div>
+        <div class="right-son">右浮动</div>
+    </div>
+    <div>这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本这是一段长文本</div>
+</body>
+</html>

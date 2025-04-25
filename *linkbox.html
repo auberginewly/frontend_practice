@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkBox - 智能跨平台收藏工具</title>
+    <style>
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            padding: 40px;
+            position: relative;
+        }
+        .logo {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(167, 119, 227, 0.3);
+        }
+        .composite-image {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .feature {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            background: #f9fafc;
+            height: 280px;
+            transition: transform 0.3s;
+        }
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+        .feature-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .annotation {
+            position: absolute;
+            background: rgba(255,255,255,0.95);
+            padding: 10px 16px;
+            border-radius: 24px;
+            font-size: 15px;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+            max-width: 60%;
+            line-height: 1.4;
+        }
+        .header {
+            margin-bottom: 30px;
+            max-width: 70%;
+        }
+        .title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #6e8efb, #a777e3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.6;
+        }
+        .annotation-1 {
+            bottom: 25px;
+            left: 25px;
+            color: #3a86ff;
+            border: 1px solid rgba(58, 134, 255, 0.2);
+        }
+        .annotation-2 {
+            top: 25px;
+            right: 25px;
+            color: #8338ec;
+            border: 1px solid rgba(131, 56, 236, 0.2);
+        }
+        .annotation-3 {
+            bottom: 30px;
+            right: 30px;
+            color: #ff006e;
+            border: 1px solid rgba(255, 0, 110, 0.2);
+        }
+        .annotation-4 {
+            top: 30px;
+            left: 30px;
+            color: #06d6a0;
+            border: 1px solid rgba(6, 214, 160, 0.2);
+        }
+        .mockup {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .cross-platform {
+            background: linear-gradient(45deg, #f5f7fa, #e4e8f0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card-preview {
+            background: linear-gradient(45deg, #f0f4ff, #e6e9ff);
+        }
+        .classification {
+            background: linear-gradient(45deg, #fff5f5, #ffebee);
+        }
+        .sync {
+            background: linear-gradient(45deg, #f0fff4, #e6ffee);
+        }
+        .device-mockup {
+            width: 80%;
+            height: 80%;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        .phone {
+            position: absolute;
+            width: 120px;
+            height: 200px;
+            background: white;
+            border-radius: 12px;
+            bottom: 20px;
+            left: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .desktop {
+            position: absolute;
+            width: 220px;
+            height: 140px;
+            background: white;
+            border-radius: 8px;
+            top: 20px;
+            right: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .screen-content {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 15px;
+            height: 100%;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        .card-thumbnail {
+            height: 60px;
+            background-size: cover;
+            background-position: center;
+        }
+        .card-title {
+            padding: 8px;
+            font-size: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .folder-view {
+            display: flex;
+            height: 100%;
+        }
+        .sidebar {
+            width: 30%;
+            background: #f8f9fa;
+            padding: 15px;
+        }
+        .folder {
+            padding: 8px;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+        .folder.active {
+            background: #e6f0ff;
+            color: #3a86ff;
+            font-weight: 500;
+        }
+        .folder-icon {
+            margin-right: 8px;
+        }
+        .content-area {
+            width: 70%;
+            padding: 15px;
+        }
+        .tag {
+            display: inline-block;
+            background: #f0f5ff;
+            color: #3a86ff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        .sync-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            padding: 20px;
+        }
+        .sync-icon {
+            width: 60px;
+            height: 60px;
+            background: #06d6a0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            color: white;
+            font-size: 24px;
+        }
+        .sync-text {
+            text-align: center;
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">LinkBox</div>
+        
+        <div class="header">
+            <h1 class="title">LinkBox</h1>
+            <p class="subtitle">一款比浏览器书签更完善的跨平台收藏工具，帮助用户随时随地保存、整理和快速访问各类内容。</p>
+        </div>
+        
+        <div class="composite-image">
+            <!-- 跨平台收藏 -->
+            <div class="feature">
+                <div class="mockup cross-platform">
+                    <div class="device-mockup">
+                        <div class="phone">
+                            <div class="screen-content" style="background-color: #f8f9fa; padding: 10px;">
+                                <div style="background: linear-gradient(90deg, #6e8efb, #a777e3); height: 40px; border-radius: 8px 8px 0 0; display: flex; align-items: center; padding: 0 15px; color: white; font-size: 14px; font-weight: 500;">添加新收藏</div>
+                                <div style="padding: 15px;">
+                                    <div style="background: white; border-radius: 8px; padding: 10px; margin-bottom: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                                        <div style="font-size: 12px; margin-bottom: 5px;">当前网页</div>
+                                        <div style="font-size: 10px; color: #666; margin-bottom: 8px; line-height: 1.4;">https://example.com/article</div>
+                                        <div style="display: flex; justify-content: space-between;">
+                                            <button style="background: #f0f5ff; border: none; border-radius: 4px; padding: 4px 8px; font-size: 10px; color: #3a86ff;">选择文件夹</button>
+                                            <button style="background: #6e8efb; border: none; border-radius: 4px; padding: 4px 8px; font-size: 10px; color: white;">立即收藏</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="desktop">
+                            <div class="screen-content" style="background-color: #f8f9fa; padding: 10px;">
+                                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                                    <div style="width: 20px; height: 20px; background: linear-gradient(90deg, #6e8efb, #a777e3); border-radius: 4px; margin-right: 8px;"></div>
+                                    <div style="font-size: 12px; font-weight: 500;">LinkBox 扩展</div>
+                                </div>
+                                <div style="background: white; border-radius: 8px; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                                    <div style="font-size: 10px; margin-bottom: 5px;">已成功收藏到 <span style="color: #3a86ff;">研究资料</span></div>
+                                    <div style="font-size: 9px; color: #666; margin-bottom: 8px; line-height: 1.4;">"如何高效学习新技能"</div>
+                                    <div style="display: flex; justify-content: flex-end;">
+                                        <button style="background: #f0f5ff; border: none; border-radius: 4px; padding: 3px 6px; font-size: 9px; color: #3a86ff;">查看</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="annotation annotation-1">跨平台收藏超便捷<br>手机电脑无缝同步</div>
+            </div>
+            
+            <!-- 卡片式预览 -->
+            <div class="feature">
+                <div class="mockup card-preview">
+                    <div class="device-mockup">
+                        <div class="card-grid">
+                            <div class="card">
+                                <div class="card-thumbnail" style="background-color: #ffdee9; background-image: linear-gradient(0deg, #ffdee9 0%, #b5fffc 100%);"></div>
+                                <div class="card-title">如何提高工作效率的10个技巧</div>
+                            </div>
+                            <div class="card">
+                                <div class="card-thumbnail" style="background-color: #f6d5f7; background-image: linear-gradient(315deg, #f6d5f7 0%, #fbe9d7 74%);"></div>
+                                <div class="card-title">Vue3 最新特性解析</div>
+                            </div>
+                            <div class="card">
+                                <div class="card-thumbnail" style="background-color: #d5fefd; background-image: linear-gradient(315deg, #d5fefd 0%, #fffcff 74%);"></div>
+                                <div class="card-title">2023年最佳设计工具推荐</div>
+                            </div>
+                            <div class="card">
+                                <div class="card-thumbnail" style="background-color: #f9d5ff; background-image: linear-gradient(315deg, #f9d5ff 0%, #e9e4f0 74%);"></div>
+                                <div class="card-title">人工智能发展趋势分析</div>
+                            </div>
+                            <div class="card">
+                                <div class="card-thumbnail" style="background-color: #f1f9ff; background-image: linear-gradient(315deg, #f1f9ff 0%, #c8f3ff 74%);"></div>
+                                <div class="card-title">健康饮食的7个原则</div>
+                            </div>
+                            <div class="card">
+                                <div class="card-thumbnail" style="background-color: #fff8e6; background-image: linear-gradient(315deg, #fff8e6 0%, #f6f7f9 74%);"></div>
+                                <div class="card-title">Python数据分析入门指南</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="annotation annotation-2">卡片预览省时间<br>内容一目了然</div>
+            </div>
+            
+            <!-- 分类管理 -->
+            <div class="feature">
+                <div class="mockup classification">
+                    <div class="device-mockup">
+                        <div class="folder-view">
+                            <div class="sidebar">
+                                <div class="folder active">
+                                    <span class="folder-icon">📁</span> 工作资料
+                                </div>
+                                <div class="folder">
+                                    <span class="folder-icon">📁</span> 学习笔记
+                                </div>
+                                <div class="folder">
+                                    <span class="folder-icon">📁</span> 兴趣爱好
+                                </div>
+                                <div class="folder">
+                                    <span class="folder-icon">📁</span> 旅行计划
+                                </div>
+                                <div style="margin-top: 15px; font-size: 11px; color: #666;">标签云</div>
+                                <div style="margin-top: 10px;">
+                                    <span class="tag">#设计</span>
+                                    <span class="tag">#编程</span>
+                                    <span class="tag">#健康</span>
+                                    <span class="tag">#AI</span>
+                                    <span class="tag">#旅行</span>
+                                </div>
+                            </div>
+                            <div class="content-area">
+                                <div style="font-size: 12px; margin-bottom: 10px; font-weight: 500;">工作资料 (24项)</div>
+                                <div style="font-size: 10px; color: #666; margin-bottom: 15px;">最近添加: "项目管理工具比较"</div>
+                                <div style="display: flex; flex-wrap: wrap;">
+                                    <span class="tag" style="background: #e6f7ff;">#工具</span>
+                                    <span class="tag" style="background: #f6ffed;">#效率</span>
+                                    <span class="tag" style="background: #fff2e8;">#会议</span>
+                                    <span class="tag" style="background: #f9f0ff;">#协作</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="annotation annotation-3">智能分类好整理<br>文件夹+标签双维度</div>
+            </div>
+            
+            <!-- 多端同步 -->
+            <div class="feature">
+                <div class="mockup sync">
+                    <div class="device-mockup">
+                        <div class="sync-screen">
+                            <div class="sync-icon">✓</div>
+                            <div class="sync-text">
+                                <div style="font-size: 16px; font-weight: 600; margin-bottom: 5px;">同步成功</div>
+                                <div style="font-size: 12px; color: #666;">所有设备已更新最新收藏内容</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="annotation annotation-4">多端同步随时用<br>手机电脑数据一致</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

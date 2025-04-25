@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 的基本语法</title>
+</head>
+<body>
+    <script>
+        var x;
+        let y=10;
+        const z=20;
+        console.log(x,y,z);
+        
+        let name="hello world";
+        console.log(name);
+
+        let empty_value=null;
+        console.log(empty_value);
+        
+        // let age = 9;
+
+        // if (age >= 18) {
+        //     console.log("成年人");
+        // } else {
+        //     console.log("未成年人");
+        // }
+
+        // let time = 11;
+        // if (time < 12) {
+        //     console.log("早上好");
+        // } else if (time < 18) {
+        //     console.log("下午好");
+        // } else {
+        //     console.log("晚上好");
+        // }
+
+        console.log("for循环");
+        for (let i = 0; i < 5; i++) {
+            console.log(i);
+        }
+
+        console.log("while循环");
+        let count =1;
+        while (count <= 10){
+            console.log(count);
+            count++;     
+        }
+        
+        console.log("循环关键字");
+        for (var i = 0; i < 5; i++) {
+            if (i === 2) {
+                continue; // 跳过当前循环
+            }
+            if (i === 4) {
+                break; // 终止循环
+            }
+            console.log(i);
+        }
+        
+    </script>
+</body>
+</html>

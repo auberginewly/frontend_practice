@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML表单</title>
+</head>
+<body>
+    <form action="">
+        <!-- 输入框确定 -->
+        <label for="">用户名：</label>
+        <input type="text" placeholder="请输入用户名" name="username">
+        <br>
+        <br>
+        <label for="password">密码：</label>
+        <input type="password" id="password" placeholder="请输入密码" name="password">
+        <br>
+        <br>
+        <!-- 单选 -->
+        <label for="">性别：</label>
+        <input type="radio" name="gender">男
+        <input type="radio" name="gender">女
+        <input type="radio" name="gender">其他
+        <br>
+        <br>
+        <!-- 多选 -->
+        <label for="">爱好：</label>
+        <input type="checkbox" name="hobby">篮球
+        <input type="checkbox" name="hobby">唱
+        <input type="checkbox" name="hobby">跳
+        <input type="checkbox" name="hobby">RAB
+        <br>
+        <br>
+        <!-- 下拉框 -->
+        <label for="">城市：</label>
+        <select name="city" id="">
+            <option value="beijing">北京</option>
+            <option value="shanghai">上海</option>
+            <option value="guangzhou">广州</option>
+            <option value="shenzhen">深圳</option>
+            <option value="hangzhou">杭州</option>
+        <br>
+        </select>
+        <br>
+        <br>
+        <!-- 文本域 -->
+        <label for="">留言：</label>
+        <textarea name="message" id="" cols="30" rows="10" placeholder="请输入留言"></textarea>
+        <br>
+        <br>
+        <!-- 提交按钮 -->
+        <input type="submit" value="上传">
+        <input type="reset" value="重置">
+        <input type="button" value="按钮">
+        <input type="hidden" name="hidden" value="hidden">
+        <input type="file" name="file">
+    </form>
+
+    <form action="#"></form>
+    <!-- action属性值是一个url 发送表单 #锚点占位不跳转 -->
+</body>
+</html> 

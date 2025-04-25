@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定位</title>
+    <style>
+        .box1 {
+            height: 350px;
+            background: aqua;
+        }
+
+        .box-normal {
+            background: pink;
+            height: 100px;
+            width: 100px;
+        }
+
+        .box-relative {
+            background: purple;
+            height: 100px;
+            width: 100px;
+            position: relative;
+            top: 50px; /* 向下移动50px */
+            left: 50px; /* 向右移动50px */
+            border: 2px solid red;
+        }
+
+        .box2 {
+            height: 350px;
+            background: red;
+            margin-bottom: 300px;
+        }
+
+        .box-absolute {
+            background: yellowgreen;
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            left: 120px; /* 向右移动120px */
+            /* 脱离正常文档流于是下面的元素上浮 */
+        }
+
+        .box3 {
+            height: 350px;
+            background: lightblue;
+        }
+
+        .box-fixed {
+            background: orange;
+            height: 100px;
+            width: 100px;
+            position: fixed;
+            top: 50px; /* 距离浏览器顶部50px */
+            left: 50px; /* 距离浏览器左侧50px */
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <h1>相对定位</h1>
+    <p>相对定位是指元素相对于其原始位置进行定位。使用 CSS 的 `position: relative;` 属性可以实现相对定位。</p>
+    <p>相对定位的元素仍然占据原来的空间，但可以通过 `top`、`right`、`bottom` 和 `left` 属性来调整其位置。</p>
+    <p>例如：</p>
+    <div class="box1">
+        <div class="box-normal"></div>
+        <div class="box-relative"></div>
+        <div class="box-normal"></div>
+    </div>
+    <h1>绝对定位</h1>
+    <p>绝对定位是指元素相对于其最近的已定位祖先元素进行定位。使用 CSS 的 `position: absolute;` 属性可以实现绝对定位。</p>
+    <p>绝对定位的元素不占据原来的空间，可以通过 `top`、`right`、`bottom` 和 `left` 属性来调整其位置。</p>
+    <p>例如：</p>
+    <div class="box2">
+        <div class="box-normal"></div>
+        <div class="box-absolute"></div>
+        <div class="box-normal"></div>
+    </div>
+    <h1>固定定位</h1>
+    <p>固定定位是指元素相对于浏览器窗口进行定位。使用 CSS 的 `position: fixed;` 属性可以实现固定定位。</p>
+    <p>固定定位的元素不占据原来的空间，可以通过 `top`、`right`、`bottom` 和 `left` 属性来调整其位置。</p>
+    <p>例如：</p>
+    <div class="box3">
+        <div class="box-normal"></div>
+        <div class="box-fixed"></div>
+        <div class="box-normal"></div>
+    </div>
+</body>
+</html>

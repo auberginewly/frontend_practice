@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1JS 函数</title>
+</head>
+<body>
+    <script>
+        function hello(){
+            console.log("hello world");
+            
+        }
+        hello();
+        function hello_with_return(){
+            return "hello world_返回值";
+        }
+        let result = hello_with_return();
+        console.log(result);
+        console.log(hello_with_return());
+
+        function hello_with_param(name){ // parameter
+            console.log("hello " + name);
+        }
+
+        hello_with_param("小明");
+        hello_with_param("wly");
+
+        // 作用域
+        var a = 1; // 全局变量
+        function test(){
+            var b = 2; // 局部变量
+            console.log(a); // 可以访问全局变量
+            console.log(b); // 可以访问局部变量
+        }
+
+        test();
+        
+    </script>
+</body>
+</html>
