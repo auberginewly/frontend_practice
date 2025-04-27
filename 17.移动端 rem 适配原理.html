@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移动端 rem 适配原理</title>
+    <style>
+        /* html{
+            font-size: 10px; /* 1rem = 10px */
+        
+
+        .box-px {
+            width: 350px;
+            height: 100px;
+            background-color: red;
+            margin-bottom: 100px;
+        }
+
+        .box-rem {
+            width: 5rem; /* 1rem = 10px */
+            height: 3rem; /* 1rem = 10px */
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box-px"></div>
+
+    <div class="box-rem"></div>
+    <script>
+        // 根据设备宽度计算html标签的属性值，设备宽度 / 10
+        // 例如：设备宽度为 375px，html标签的font-size = 375 / 10 = 37.5px
+        // 这样就可以实现1rem = 37.5px
+        function resetHtmlFontSize() {
+            var deviceWidth = document.documentElement.clientWidth;
+            var fontSize = deviceWidth / 10; // 1rem = deviceWidth / 10
+            document.documentElement.style.fontSize = fontSize + 'px';
+        }
+
+        resetHtmlFontSize(); // 初始化
+
+        // 绑定事件
+        window.onresize = resetHtmlFontSize; // 监听窗口大小变化
+        // 也可以使用 window.addEventListener('resize', resetHtmlFontSize);
+        // 这样就可以实现当窗口大小变化时，html标签的font-size也会随之变化
+        // 这样就可以实现1rem = 375px
+    </script>
+</body>
+
+</html>

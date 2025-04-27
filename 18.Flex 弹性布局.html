@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex 弹性盒子</title>
+    <style>
+        html {
+            font-size: 10px;     /* 1rem = 10px */
+        }
+        .container {
+            display: flex;
+            background-color: aqua;
+            /* flex-direction: column-reverse; 反向排列 */
+
+            flex-wrap: wrap; /* 换行 */
+            /* flex-wrap: nowrap; 不换行 */
+            /* flex-wrap: wrap-reverse; 反向换行 */
+            /* flex-direction: row; 水平排列 */
+            /* flex-direction: column; 垂直排列 */
+            /* flex-direction: row-reverse; 反向水平排列 */
+            /* flex-direction: column-reverse; 反向垂直排列 */
+            /* justify-content: center; 水平居中 */
+            /* justify-content: space-between; 水平均匀分布 */
+            /* justify-content: space-around; 水平均匀分布，间距相等 */
+            /* justify-content: space-evenly; 水平均匀分布，间距相等 */
+            /* align-items: center; 垂直居中 */
+            /* align-items: flex-start; 垂直顶部对齐 */
+            /* align-items: flex-end; 垂直底部对齐 */
+            /* align-items: stretch; 垂直拉伸 */
+            /* align-items: baseline; 垂直基线对齐 */
+            /* align-content: center; 垂直居中 */
+            /* align-content: space-between; 垂直均匀分布 */
+            /* align-content: space-around; 垂直均匀分布，间距相等 */
+            /* align-content: space-evenly; 垂直均匀分布，间距相等 */
+            /* align-content: stretch; 垂直拉伸 */
+            /* align-content: flex-start; 垂直顶部对齐 */
+            /* align-content: flex-end; 垂直底部对齐 */
+            /* align-content: baseline; 垂直基线对齐 */
+            /* align-content: normal; 垂直正常对齐 */
+            /* align-content: initial; 垂直初始对齐 */
+            /* align-content: inherit; 垂直继承对齐 */
+            /* align-content: unset; 垂直未设置对齐 */
+            /* align-content: revert; 垂直还原对齐 */
+            /* align-content: revert-layer; 垂直还原层对齐 */
+            /* align-content: initial; 垂直初始对齐 */
+            /* align-content: unset; 垂直未设置对齐 */
+        }
+        .item {
+            width: 20rem;
+            font-size: 8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item" style="background-color:blue;">1</div>
+        <div class="item" style="background-color:green;">2</div>
+        <div class="item" style="background-color:red;">3</div>
+        <div class="item" style="background-color:purple;">4</div>
+        <div class="item" style="background-color:yellow;">5</div>
+        <div class="item" style="background-color:orange;">6</div>
+</body>
+</html>
